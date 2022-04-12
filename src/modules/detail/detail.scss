@@ -1,0 +1,25 @@
+.detail{
+    background-color: white;
+    height: 100%;
+    padding: 32px;
+
+    .basic {
+        align-items: center;
+        justify-content: center;
+        display: flex;
+        flex-direction: column;
+        &__name {
+            font-weight: 100;
+            font-size: x-large;
+            text-transform: uppercase;
+        }
+    
+        &__image {
+            width: 180px;
+            height: 180px;
+            background-size: contain;
+        }
+    }
+
+    
+}

@@ -1,1 +1,2 @@
-# react-pokedex
+# react-covid-walks
+react-covid-walks
