@@ -1,61 +1,80 @@
-import React, { useEffect } from "react";
-import { getPokemon, getPokemonForm, removeMove } from "./actions";
-import "./detail.scss";
+import React, { useEffect } from 'react';
+import { getPokemon, getPokemonForm, removeMove } from './actions';
+import './detail.scss';
 
 import { useParams } from 'react-router-dom';
-import { useDispatch, useSelector } from "react-redux";
-import Carrusel from "../../components/carrusel/Carrusel";
+import { useDispatch, useSelector } from 'react-redux';
+import Carrusel from '../../components/carrusel/Carrusel';
+import Fade from 'react-reveal/Fade';
+import { IoIosClose } from 'react-icons/io';
+import { useTranslation } from 'react-i18next';
+import LottieAnimation, {
+  LOTTIE_ANIMATION_TYPE
+} from '../../components/lottie/Lottie';
 
 const Detail = () => {
   const { name } = useParams();
   const dispatch = useDispatch();
-  const { loading, pokemon, pokemonForms, loadingForm } = useSelector((state: any) => state.detail);
+  const { loading, pokemon, pokemonForms, loadingForm } = useSelector(
+    (state: any) => state.detail
+  );
+  const { t } = useTranslation('common');
+
+  console.log(loading, loadingForm);
 
   useEffect(() => {
     dispatch(getPokemon(name));
-  }, []);
+  }, [dispatch, name]);
 
   useEffect(() => {
-    if(pokemon){
+    if (!pokemonForms && pokemon) {
       dispatch(getPokemonForm(name));
     }
-  }, [pokemon])
-  
+  }, [pokemon, dispatch, name]);
+
   return (
     <div className="detail">
-      {pokemon && 
+      {(loading || loadingForm) && <LottieAnimation animation={LOTTIE_ANIMATION_TYPE.LOADING} />}
+      {pokemon && (
         <>
           <div className="basic">
-            <Carrusel photos={Object.values(pokemon.sprites).filter(photo => typeof photo == 'string')}/>
+            <Carrusel
+              photos={Object.values(pokemon.sprites).filter(
+                (photo) => typeof photo == 'string'
+              )}
+            />
             <div className="basic__name">{pokemon.name}</div>
           </div>
           <div className="detail__abilities">
-            abilities
             <ul>
-              {pokemon.abilities.filter(abilities => !abilities.is_hidden).map((abilities, i) => 
-                <li>{abilities.ability.name}</li>
-              )}
+              {pokemon.abilities
+                .filter((abilities : any) => !abilities.is_hidden)
+                .map((abilities : any, i : number) => (
+                  <li key={i}>{abilities.ability.name}</li>
+                ))}
             </ul>
           </div>
-          <div className="detail__moves">
-            Moves
-            <ul>
-              {pokemon.moves.map((moves, i) => 
+          <ul className="detail__moves">
+            {pokemon.moves.map((moves : any, i : number) => (
+              <Fade key={i} bottom>
                 <li>
-                  <span className="move__name">{moves.move.name}</span>
-                  <div className="move__remove" onClick={() => dispatch(removeMove(moves.move.name))}>Eliminar</div>
+                  <div className="move">
+                    <span className="move__name">{moves.move.name}</span>
+                    <IoIosClose
+                      className="move__icon"
+                      size={32}
+                      onClick={() => dispatch(removeMove(moves.move.name))}
+                    />
+                  </div>
                 </li>
-              )}
-            </ul>
-          </div>
+              </Fade>
+            ))}
+          </ul>
         </>
-      }
-      {pokemonForms && 
-        <>
-          <div className="title">Form {pokemonForms.id}</div>
-          <div className="info">Is for battle only {pokemonForms.is_battle_only ? 'YES' : 'NO'}</div>
-        </>
-      }
+      )}
+      {pokemonForms && pokemonForms.is_battle_only && (
+        <div className="info">{t('only_for_battle')}</div>
+      )}
     </div>
   );
 };

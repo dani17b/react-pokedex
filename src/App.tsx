@@ -10,12 +10,12 @@ import {
   Route
 } from 'react-router-dom';
 
-function App(props) {
+function App() {
   return (
     <div className="app">
       <div className="app-bg"></div>
-      <Header />
       <Router>
+        <Header />
         <Switch>   
           <Route path="/" exact={true}>
             <Home />

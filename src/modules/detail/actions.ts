@@ -1,15 +1,15 @@
-import { PokemonClient } from "pokenode-ts";
+import { PokemonClient } from 'pokenode-ts';
 
-export const LOAD_POKEMON_DETAIL_REQUEST = "LOAD_POKEMON_DETAIL_REQUEST";
-export const LOAD_POKEMON_DETAIL_RESPONSE = "LOAD_POKEMON_DETAIL_RESPONSE";
-export const LOAD_POKEMON_FORM_REQUEST = "LOAD_POKEMON_FORM_REQUEST";
-export const LOAD_POKEMON_FORM_RESPONSE = "LOAD_POKEMON_FORM_RESPONSE";
-export const REMOVE_MOVE = "REMOVE_MOVE";
+export const LOAD_POKEMON_DETAIL_REQUEST = 'LOAD_POKEMON_DETAIL_REQUEST';
+export const LOAD_POKEMON_DETAIL_RESPONSE = 'LOAD_POKEMON_DETAIL_RESPONSE';
+export const LOAD_POKEMON_FORM_REQUEST = 'LOAD_POKEMON_FORM_REQUEST';
+export const LOAD_POKEMON_FORM_RESPONSE = 'LOAD_POKEMON_FORM_RESPONSE';
+export const REMOVE_MOVE = 'REMOVE_MOVE';
 
 const api = new PokemonClient();
 
-export const getPokemon = (name) => {
-  return (dispatch) => {
+export const getPokemon = (name : string) => {
+  return (dispatch : any) => {
     dispatch({
       type: LOAD_POKEMON_DETAIL_REQUEST,
     });
@@ -23,9 +23,8 @@ export const getPokemon = (name) => {
   };
 };
 
-
-export const getPokemonForm = (name) => {
-  return (dispatch) => {
+export const getPokemonForm = (name : string) => {
+  return (dispatch : any) => {
     dispatch({
       type: LOAD_POKEMON_FORM_REQUEST,
     });
@@ -39,9 +38,9 @@ export const getPokemonForm = (name) => {
   };
 };
 
-export const removeMove = (name) => {
+export const removeMove = (name : string) => {
   return {
     type: REMOVE_MOVE,
-    name
-  }
-} 
+    name,
+  };
+};

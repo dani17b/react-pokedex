@@ -1,5 +1,3 @@
 export const Config = {
-  serviceURL: 'http://localhost:3037',
-  useMockData: true,
-  mockDataLoadTime: 200
+  serviceURL: 'http://localhost:8080'
 };

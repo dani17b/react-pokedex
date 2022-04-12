@@ -4,15 +4,11 @@ import './home.scss';
 import { DataGrid, GridColDef } from '@mui/x-data-grid';
 import { useDispatch, useSelector } from 'react-redux';
 import { useDebounce } from 'usehooks-ts';
-import { useHistory } from "react-router-dom";
+import { useHistory } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 const PAGE_SIZE = 10;
 const FILTER_DEBOUNCE = 500;
-
-const columns: GridColDef[] = [
-  { field: 'name', headerName: 'Nombre', width: 200, sortable: true },
-  { field: 'url', headerName: 'Url', width: 300 },
-];
 
 export const Home = () => {
   const dispatch = useDispatch();
@@ -24,25 +20,40 @@ export const Home = () => {
   const history = useHistory();
 
   useEffect(() => {
-    dispatch(find({
-      start: page * PAGE_SIZE,
-      count: PAGE_SIZE,
-      filter: nameFilterDebounced
-    }));
+    dispatch(
+      find({
+        start: page * PAGE_SIZE,
+        count: PAGE_SIZE,
+        filter: nameFilterDebounced,
+      })
+    );
   }, [page, nameFilterDebounced]);
 
   const { loading, pokemons, total } = useSelector((state: any) => state.home);
+
+  const { t } = useTranslation('common');
+
+  const columns: GridColDef[] = [
+    { field: 'name', headerName: t('name'), width: 200, sortable: true },
+    { field: 'url', headerName: t('url'), width: 300 },
+  ];
+
   return (
     <div className="home">
-      <input className="home__search" value={nameFilter} onChange={(e) => {
-        setNameFilter(e.target.value);
-      }}/>
+      <input
+        className="home__search"
+        value={nameFilter}
+        onChange={(e) => {
+          setNameFilter(e.target.value);
+        }}
+        placeholder={t('search')}
+      />
       <div className="home__list">
         <DataGrid
           page={page}
-          rows={pokemons.map((pokemon, id) => ({
+          rows={pokemons.map((pokemon : any, id : number) => ({
             id,
-            ...pokemon
+            ...pokemon,
           }))}
           columns={columns}
           rowCount={total}

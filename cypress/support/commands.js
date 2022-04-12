@@ -24,16 +24,7 @@
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
 
-Cypress.Commands.add('loginUser', user => {
+Cypress.Commands.add('loadHome', user => {
   // Ir a inicio
   cy.visit('/');
-
-  // Introducir login
-  cy.get('[type="text"].login__form__input').type(user.login);
-
-  // Introducir password
-  cy.get('[type="password"].login__form__input').type(user.password);
-
-  // Click en el boton de login
-  cy.get('.login__form__button').click();
 });

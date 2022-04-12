@@ -1,11 +1,6 @@
 {
-	"elemento1": {
-		"descripcion": "Elemento 1"
-	},
-	"elemento2": {
-		"descripcion": "Elemento 2"
-	},
-	"elemento3": {
-		"descripcion": "Elemento 3"
-	}
+	"only_for_battle": "Solo para pelea",
+	"search": "Buscar...",
+	"name" : "Nombre",
+	"url" : "Enlace"
 }

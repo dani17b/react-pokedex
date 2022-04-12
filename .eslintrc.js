@@ -54,6 +54,7 @@ module.exports = {
 
         // Reglas para warnings de elementos permitidos en depuracion
         "no-console" : "warn",
-        "no-debugger" : "warn"
+        "no-debugger" : "warn",
+        "no-case-declarations" : "off"
     }
 }

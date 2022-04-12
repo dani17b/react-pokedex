@@ -6,7 +6,7 @@ export const LOTTIE_ANIMATION_TYPE = {
   LOADING: lottieLoading
 };
 
-const LottieAnimation = props => {
+const LottieAnimation = (props : any) => {
   const { animation } = props;
 
   const defaultOptions = {

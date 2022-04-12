@@ -3,10 +3,10 @@ import { LOAD_POKEMONS_REQUEST, LOAD_POKEMONS_RESPONSE } from './actions';
 const initialState = {
   loading: false,
   pokemons: [],
-  total : null
+  total: null,
 };
 
-const home = (state = initialState, action) => {
+const home = (state = initialState, action : any) => {
   switch (action.type) {
     case LOAD_POKEMONS_REQUEST:
       return {
@@ -17,8 +17,8 @@ const home = (state = initialState, action) => {
       return {
         ...state,
         loading: false,
-        total : action.pokemons.total,
-        pokemons : action.pokemons.results
+        total: action.pokemons.total,
+        pokemons: action.pokemons.results,
       };
     default:
       return state;
