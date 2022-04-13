@@ -27,7 +27,7 @@ export const Home = () => {
         filter: nameFilterDebounced,
       })
     );
-  }, [page, nameFilterDebounced]);
+  }, [page, nameFilterDebounced, dispatch]);
 
   const { loading, pokemons, total } = useSelector((state: any) => state.home);
 

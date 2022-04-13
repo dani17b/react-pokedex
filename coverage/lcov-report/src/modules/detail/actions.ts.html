@@ -109,24 +109,23 @@
 <a name='L44'></a><a href='#L44'>44</a>
 <a name='L45'></a><a href='#L45'>45</a>
 <a name='L46'></a><a href='#L46'>46</a>
-<a name='L47'></a><a href='#L47'>47</a>
-<a name='L48'></a><a href='#L48'>48</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L47'></a><a href='#L47'>47</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -136,7 +135,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -151,24 +150,23 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { PokemonClient } from "pokenode-ts";
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { PokemonClient } from 'pokenode-ts';
 &nbsp;
-export const LOAD_POKEMON_DETAIL_REQUEST = "LOAD_POKEMON_DETAIL_REQUEST";
-export const LOAD_POKEMON_DETAIL_RESPONSE = "LOAD_POKEMON_DETAIL_RESPONSE";
-export const LOAD_POKEMON_FORM_REQUEST = "LOAD_POKEMON_FORM_REQUEST";
-export const LOAD_POKEMON_FORM_RESPONSE = "LOAD_POKEMON_FORM_RESPONSE";
-export const REMOVE_MOVE = "REMOVE_MOVE";
+export const LOAD_POKEMON_DETAIL_REQUEST = 'LOAD_POKEMON_DETAIL_REQUEST';
+export const LOAD_POKEMON_DETAIL_RESPONSE = 'LOAD_POKEMON_DETAIL_RESPONSE';
+export const LOAD_POKEMON_FORM_REQUEST = 'LOAD_POKEMON_FORM_REQUEST';
+export const LOAD_POKEMON_FORM_RESPONSE = 'LOAD_POKEMON_FORM_RESPONSE';
+export const REMOVE_MOVE = 'REMOVE_MOVE';
 &nbsp;
 const api = new PokemonClient();
 &nbsp;
-export const getPokemon = (name) =&gt; {
-  return (dispatch) =&gt; {
+export const getPokemon = (name : string) =&gt; {
+  return (dispatch : any) =&gt; {
     dispatch({
       type: LOAD_POKEMON_DETAIL_REQUEST,
     });
@@ -182,9 +180,8 @@ export const getPokemon = (name) =&gt; {
   };
 };
 &nbsp;
-&nbsp;
-export const getPokemonForm = (name) =&gt; {
-  return (dispatch) =&gt; {
+export const getPokemonForm = (name : string) =&gt; {
+  return (dispatch : any) =&gt; {
     dispatch({
       type: LOAD_POKEMON_FORM_REQUEST,
     });
@@ -198,12 +195,12 @@ export const getPokemonForm = (name) =&gt; {
   };
 };
 &nbsp;
-export const removeMove = <span class="fstat-no" title="function not covered" >(n</span>ame) =&gt; {
-<span class="cstat-no" title="statement not covered" >  return {</span>
-    type: REMOVE_MOVE,
-    name
-  }
-} 
+export const removeMove = (name : string) =&gt; {
+  return {<span class="fstat-no" title="function not covered" ></span>
+<span class="cstat-no" title="statement not covered" >    type: REMOVE_MOVE,</span>
+    name,
+  };
+};
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -211,7 +208,7 @@ export const removeMove = <span class="fstat-no" title="function not covered" >(
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at Tue Apr 12 2022 22:38:24 GMT+0200 (hora de verano de Europa central)
+                at Wed Apr 13 2022 12:03:56 GMT+0200 (hora de verano de Europa central)
             </div>
         <script src="../../../prettify.js"></script>
         <script>

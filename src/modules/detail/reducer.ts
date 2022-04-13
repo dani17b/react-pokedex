@@ -13,7 +13,7 @@ const initialState = {
   loadingForm: false,
 };
 
-const detail = (state = initialState, action : any) => {
+const detail = (state : any = initialState, action : any) => {
   switch (action.type) {
     case LOAD_POKEMON_DETAIL_REQUEST:
       return {
@@ -46,7 +46,7 @@ const detail = (state = initialState, action : any) => {
         pokemon: {
           ...state.pokemon,
           moves: state.pokemon.moves
-            .filter((move : any) => move.move.name != action.name)
+            .filter((move : any) => move.move.name !== action.name)
             .slice(0),
         },
       };

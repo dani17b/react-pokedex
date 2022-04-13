@@ -5,22 +5,21 @@ import './detail.scss';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import Carrusel from '../../components/carrusel/Carrusel';
-import Fade from 'react-reveal/Fade';
 import { IoIosClose } from 'react-icons/io';
 import { useTranslation } from 'react-i18next';
 import LottieAnimation, {
   LOTTIE_ANIMATION_TYPE
 } from '../../components/lottie/Lottie';
 
+const Fade = require('react-reveal/Fade');
+
 const Detail = () => {
-  const { name } = useParams();
+  const { name } = useParams<any>();
   const dispatch = useDispatch();
   const { loading, pokemon, pokemonForms, loadingForm } = useSelector(
     (state: any) => state.detail
   );
   const { t } = useTranslation('common');
-
-  console.log(loading, loadingForm);
 
   useEffect(() => {
     dispatch(getPokemon(name));
@@ -30,7 +29,7 @@ const Detail = () => {
     if (!pokemonForms && pokemon) {
       dispatch(getPokemonForm(name));
     }
-  }, [pokemon, dispatch, name]);
+  }, [pokemon, dispatch, name, pokemonForms]);
 
   return (
     <div className="detail">
